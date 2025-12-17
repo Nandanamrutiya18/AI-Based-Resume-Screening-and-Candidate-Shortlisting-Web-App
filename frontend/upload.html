@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Resume</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="page">
+  <div class="card-box">
+
+    <h2>Upload Resumes</h2>
+
+    <!-- Upload Type -->
+    <div class="radio-group">
+      <label>
+        <input type="radio" name="uploadType" value="single" checked onchange="updateFileInput()">
+        Single PDF
+      </label>
+
+      <label>
+        <input type="radio" name="uploadType" value="multiple" onchange="updateFileInput()">
+        Multiple PDFs
+      </label>
+
+      <label>
+        <input type="radio" name="uploadType" value="zip" onchange="updateFileInput()">
+        ZIP File
+      </label>
+    </div>
+
+    <!-- File Inputs -->
+    <div class="file-group">
+
+      <!-- Single -->
+      <input type="file" id="singleFile" accept=".pdf">
+
+      <!-- Multiple -->
+      <input type="file" id="multipleFiles" accept=".pdf" multiple style="display:none">
+
+      <!-- ZIP -->
+      <input type="file" id="zipFile" accept=".zip" style="display:none">
+
+    </div>
+
+    <button type="button" onclick="uploadResume()">Upload</button>
+
+  </div>
+</div>
+
+<script src="js/upload.js"></script>
+
+<script>
+function updateFileInput() {
+  const type = document.querySelector("input[name='uploadType']:checked").value;
+
+  document.getElementById("singleFile").style.display = "none";
+  document.getElementById("multipleFiles").style.display = "none";
+  document.getElementById("zipFile").style.display = "none";
+
+  if (type === "single") {
+    document.getElementById("singleFile").style.display = "block";
+  } 
+  else if (type === "multiple") {
+    document.getElementById("multipleFiles").style.display = "block";
+  } 
+  else if (type === "zip") {
+    document.getElementById("zipFile").style.display = "block";
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Resume Shortlisting</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="card">
+  <h2>Choose Shortlisting Method</h2>
+
+  <label>
+    <input type="radio" name="method" id="manualRadio">
+    Manual Shortlisting
+  </label>
+
+  <label>
+    <input type="radio" name="method" id="conditionRadio">
+    Condition-Based Shortlisting
+  </label>
+
+  <!-- MANUAL -->
+  <div id="manualBox" class="hidden">
+    <h3>Enter Required Skills</h3>
+    <textarea id="manualSkills"
+      placeholder="Example: Python, FastAPI, SQL"></textarea>
+  </div>
+
+  <!-- CONDITION -->
+  <div id="conditionBox" class="hidden">
+    <h3>Select Conditions</h3>
+
+    <strong>Role</strong><br>
+    <input type="checkbox" value="Backend"> Backend<br>
+    <input type="checkbox" value="Frontend"> Frontend<br>
+    <input type="checkbox" value="Full Stack"> Full Stack<br>
+
+    <strong>Skills</strong><br>
+    <input type="checkbox" value="Python"> Python<br>
+    <input type="checkbox" value="Java"> Java<br>
+    <input type="checkbox" value="React"> React<br>
+  </div>
+
+  <button onclick="applyShortlist()">Apply Shortlist</button>
+</div>
+
+<script src="js/shortlist.js"></script>
+</body>
+</html>
