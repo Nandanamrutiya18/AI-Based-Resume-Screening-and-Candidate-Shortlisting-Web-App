@@ -1,5 +1,7 @@
-// auth.js
+// ================= AUTH ONLY =================
 // Handles ONLY registration & login
+// Requires showSuccessPopup() from common.js
+
 
 // ================= REGISTER =================
 async function register() {
@@ -26,8 +28,12 @@ async function register() {
       return;
     }
 
-    alert("Registration successful. Please login.");
-    window.location.href = "login.html";
+    // ✅ SUCCESS POPUP
+    showSuccessPopup(
+      "Registration Successful 🎉",
+      "Your account has been created",
+      "login.html"
+    );
 
   } catch (err) {
     alert("Server error during registration");
@@ -53,22 +59,30 @@ async function login() {
       body: JSON.stringify({ email, password })
     });
 
-    const data = await res.json();
+    // ✅ SAFELY READ RESPONSE
+    const text = await res.text();
+    let data;
+
+    try {
+      data = JSON.parse(text);
+    } catch {
+      throw new Error("Invalid JSON from server");
+    }
 
     if (!res.ok) {
       alert(data.detail || "Invalid email or password");
       return;
     }
 
-    // ✅ save login session
+    // ✅ SAVE SESSION
     localStorage.setItem("user_id", data.user_id);
     localStorage.setItem("username", data.username);
 
-    // ✅ DIRECT redirect to upload page
+    alert("Login successful!");
     window.location.href = "upload.html";
 
   } catch (err) {
-    alert("Server error during login");
-    console.error(err);
+    console.error("Login error:", err);
+    alert("❌ Login failed due to response format issue");
   }
 }

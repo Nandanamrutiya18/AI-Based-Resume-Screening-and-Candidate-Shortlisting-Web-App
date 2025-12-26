@@ -15,15 +15,15 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# ✅ Serve uploaded PDFs
 app.mount(
     "/uploaded_resumes",
     StaticFiles(directory="uploaded_resumes"),
     name="uploaded_resumes"
 )
-# ✅ REGISTER ROUTES
+
+# ✅ Register routes
 app.include_router(auth_routes.router)
 app.include_router(upload_routes.router)
 app.include_router(shortlist_routes.router)
-
-# ✅ SERVE PDF FILES
-#app.mount("/uploaded_resumes", StaticFiles(directory="uploaded_resumes"), name="resumes")

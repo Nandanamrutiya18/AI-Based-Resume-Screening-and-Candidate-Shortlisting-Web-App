@@ -21,7 +21,7 @@ body {
   text-align: center;
   font-size: 22px;
   font-weight: bold;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
 /* ===== Page Container ===== */
@@ -35,28 +35,23 @@ body {
 /* ===== Card Styles ===== */
 .card, .card-box {
   background: #ffffff;
-  border-radius: 15px;
-  padding: 30px 25px;
-  max-width: 500px;
+  border-radius: 18px;
+  padding: 32px 28px;
+  max-width: 520px;
   width: 100%;
-  box-shadow: 0 12px 35px rgba(0,0,0,0.12);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+  transition: all 0.3s ease;
 }
 
 .card:hover, .card-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.18);
 }
 
 .card h1, .card h2, .card-box h1, .card-box h2 {
   color: #1e3a8a;
-  margin-bottom: 15px;
+  margin-bottom: 18px;
   text-align: center;
-}
-
-.card h3, .card-box h3 {
-  color: #1e3a8a;
-  margin: 15px 0 10px;
 }
 
 /* ===== Inputs & Textarea ===== */
@@ -64,18 +59,18 @@ input, select, textarea, button {
   width: 100%;
   padding: 12px 15px;
   margin-top: 12px;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 14px;
   transition: all 0.3s ease;
 }
 
 input, select, textarea {
-  border: 1px solid #ccc;
+  border: 1px solid #d1d5db;
 }
 
 input:focus, select:focus, textarea:focus {
   border-color: #1e88e5;
-  box-shadow: 0 0 8px rgba(30, 136, 229, 0.3);
+  box-shadow: 0 0 10px rgba(30,136,229,0.35);
   outline: none;
 }
 
@@ -86,8 +81,8 @@ button {
   border: none;
   font-weight: bold;
   cursor: pointer;
-  border-radius: 8px;
   font-size: 16px;
+  border-radius: 10px;
 }
 
 button:hover {
@@ -95,128 +90,149 @@ button:hover {
   transform: translateY(-2px);
 }
 
-/* ===== Radio & Checkbox Styles ===== */
-input[type="radio"], input[type="checkbox"] {
-  width: auto;
-  margin-right: 8px;
-}
-
-/* ===== Hidden Elements ===== */
+/* ===== Hidden ===== */
 .hidden { display: none; }
-
-/* ===== Result & Shortlist Cards ===== */
-.result-card, .result, .shortlist-card {
-  background: #ffffff;
-  border-radius: 15px;
-  padding: 25px;
-  margin-bottom: 25px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.result-card:hover, .result:hover, .shortlist-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
-}
-
-.result-card h3, .shortlist-card h3 {
-  color: #1e3a8a;
-}
-
-.result-card p, .result p {
-  margin: 8px 0;
-  color: #374151;
-}
-
-/* ===== Best Match Badge ===== */
-.best-match, .badge {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: gold;
-  color: black;
-  padding: 6px 14px;
-  border-radius: 25px;
-  font-weight: bold;
-  font-size: 13px;
-}
-
-/* ===== Progress Bars ===== */
-.progress {
-  background: #e5e7eb;
-  border-radius: 20px;
-  overflow: hidden;
-  margin: 10px 0 15px;
-}
-
-.bar {
-  height: 22px;
-  color: white;
-  font-size: 13px;
-  font-weight: bold;
-  text-align: center;
-  line-height: 22px;
-  transition: width 0.6s ease, background 0.3s ease;
-}
-
-.bar.red { background: #ef4444; }
-.bar.yellow { background: #f59e0b; }
-.bar.green { background: #0bbd4c; }
-
-/* ===== File Inputs for Upload Page ===== */
-.file-group input {
-  margin-top: 10px;
-}
-
-/* ===== Radio Group for Upload Type ===== */
-.radio-group label {
-  display: inline-block;
-  margin-right: 15px;
-  cursor: pointer;
-}
-
-/* ===== Links ===== */
-a {
-  color: #1e88e5;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-a:hover {
-  color: #1565c0;
-  text-decoration: underline;
-}
-
-/* ===== Page Centering for Auth Pages ===== */
-.center-bg {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 30px 10px;
-}
-
-/* ===== Textarea Styles ===== */
-textarea {
-  resize: vertical;
-  min-height: 80px;
-}
 
 /* ===== Results Container ===== */
 .results-container {
-  max-width: 960px;
+  max-width: 1000px;
   margin: 40px auto;
   padding: 0 20px;
 }
 
+/* ===== Result Card ===== */
+.result-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 28px;
+  margin-bottom: 30px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.result-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+}
+
+.result-card h3 {
+  color: #1e3a8a;
+  margin-bottom: 12px;
+}
+
+/* ===== Best Match Badge ===== */
+.best-match {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: linear-gradient(135deg, gold, orange);
+  color: black;
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 13px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* ===== Progress Bar ===== */
+.progress {
+  width: 100%;
+  background: #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 12px 0;
+}
+
+.progress-bar {
+  height: 22px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  transition: width 0.6s ease;
+}
+
+/* Score Colors */
+.progress-bar.low { background: #ef4444; }
+.progress-bar.medium { background: #f59e0b; }
+.progress-bar.high { background: #22c55e; }
+
+/* ===== Skill Chips ===== */
+.skill-chip {
+  display: inline-block;
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 4px 10px;
+  margin: 4px 4px 4px 0;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.skill-chip.missing {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* ===== Actions ===== */
+.actions {
+  margin-top: 15px;
+}
+
+.actions .btn {
+  display: inline-block;
+  padding: 8px 16px;
+  margin-right: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.actions .view {
+  background: #1e88e5;
+  color: white;
+}
+
+.actions .download {
+  background: #22c55e;
+  color: white;
+}
+
+/* ===== Stepper (Sidebar Ready) ===== */
+.stepper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.step {
+  padding: 8px 18px;
+  border-radius: 20px;
+  background: #e5e7eb;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.step.active {
+  background: #1e88e5;
+  color: white;
+}
+
+.step.done {
+  background: #22c55e;
+  color: white;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
-  .card, .card-box, .wide {
-    width: 90%;
-    margin: 30px auto;
+  .card, .card-box {
+    width: 95%;
+    margin: 25px auto;
   }
-  .results-container {
-    padding: 0 10px;
+
+  .stepper {
+    flex-direction: column;
+    gap: 10px;
   }
 }

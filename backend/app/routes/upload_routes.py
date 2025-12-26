@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from typing import List
 import os, uuid
 
-from PyPDF2 import PdfReader
+import pdfplumber  # ✅ BETTER PDF TEXT EXTRACTION
 
 from app.database import get_db
 from app.models import Resume
@@ -14,15 +14,19 @@ UPLOAD_DIR = "uploaded_resumes"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 
+# ✅ FIXED: STRONG & ACCURATE TEXT EXTRACTION
 def extract_pdf_text(path: str) -> str:
+    text = ""
     try:
-        reader = PdfReader(path)
-        text = ""
-        for page in reader.pages:
-            text += page.extract_text() or ""
-        return text
-    except Exception:
-        return ""
+        with pdfplumber.open(path) as pdf:
+            for page in pdf.pages:
+                page_text = page.extract_text()
+                if page_text:
+                    text += page_text + " "
+    except Exception as e:
+        print("PDF extract error:", e)
+
+    return text.lower()  # normalize here
 
 
 @router.post("/upload/")
@@ -52,6 +56,7 @@ async def upload_resume(
         db.add(resume)
         db.commit()
 
+    # ✅ SINGLE FILE
     if upload_type == "single" and file:
         name = f"{uuid.uuid4()}_{file.filename}"
         path = os.path.join(UPLOAD_DIR, name).replace("\\", "/")
@@ -62,6 +67,7 @@ async def upload_resume(
         save_resume(name, path)
         saved.append(name)
 
+    # ✅ MULTIPLE FILES
     elif upload_type == "multiple" and files:
         for f in files:
             name = f"{uuid.uuid4()}_{f.filename}"

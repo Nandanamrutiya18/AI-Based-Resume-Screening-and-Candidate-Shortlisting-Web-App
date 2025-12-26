@@ -1,5 +1,5 @@
 function uploadResume() {
-  // 🔹 Get selected upload type
+  
   const selectedType = document.querySelector("input[name='uploadType']:checked");
 
   if (!selectedType) {
@@ -51,7 +51,7 @@ function uploadResume() {
     formData.append("file", zipInput.files[0]);
   }
 
-  // 🔹 Upload request
+
   fetch("http://127.0.0.1:8000/upload/", {
     method: "POST",
     body: formData
@@ -64,10 +64,11 @@ function uploadResume() {
       return data;
     })
     .then(data => {
-      alert(` Upload successful!\nFiles uploaded: ${data.files?.length || 1}`);
-      window.location.href = "shortlist.html";
-    })
-    .catch(err => {
-      alert("❌ " + err.message);
-    });
+  
+  localStorage.setItem("upload_batch_id", data.upload_batch_id);
+
+  alert(` Upload successful!\nFiles uploaded: ${data.files?.length || 1}`);
+  window.location.href = "shortlist.html";
+})
+
 }
